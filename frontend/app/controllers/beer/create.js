@@ -13,6 +13,10 @@ export default Ember.Controller.extend({
 			} else {
 				this.set('notification', 'name cannot be empty!');
 			}
+		},
+		toBeerList() {
+			this.get('model').deleteRecord();
+			this.transitionToRoute('beer-list');
 		}
 	}
 });
