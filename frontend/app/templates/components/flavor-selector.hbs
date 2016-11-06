@@ -1,0 +1,13 @@
+<ul class="list">
+	{{#each selectedFlavors as |flavor|}}
+		<li>
+		{{selected-flavor remove=(action "remove") flavor=flavor updateStrength=(action "updateStrength")}}
+		</li>
+	{{/each}}
+	{{#each availableFlavors as |flavor|}}
+		<li>
+			<input type="checkbox" {{action "add" flavor}} id="flavor-{{flavor.flavor.name}}"/>
+			<label for="flavor-{{flavor.flavor.name}}">{{flavor.flavor.name}}</label>
+		</li>
+	{{/each}}
+</ul>

@@ -1,0 +1,224 @@
+<h2>User {{model.rating.user.name}} rating beer {{model.rating.beer.name}}</h2>
+	<div class="row">
+		<div class="col-sm-12 rating">
+			<h2>Rating</h2>
+			<p>{{model.rating.text}}</p>
+
+			<p>Total Score: {{model.rating.score}} / 50</p>
+		</div>
+	</div>
+<form>
+	<div class="row">
+		<div class="col-sm-4">
+			<h3>Details</h3>
+			<div class="form-group">
+				<label for="servingType">Serving type</label>
+				<select class="form-control" onchange={{action "setServingType" value="target.value"}}>
+					<option value="">--</option>
+					{{#each criteria.servingTypes as |servingType|}}
+						<option value="{{servingType}}">{{servingType}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="portionSize">Portion size (ml)</label>
+				{{input class="form-control" value=model.rating.portionSize}}
+			</div>
+			<div class="form-group">
+				<label for="portionSize">Location</label>
+				{{input class="form-control" value=model.rating.location}}
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<h3>Appearance</h3>
+			<div class="form-group">
+				<label for="color">Color</label>
+				<select class="form-control" onchange={{action "setColor" value="target.value"}}>
+					<option value="">--</option>
+					{{#each criteria.colors as |color|}}
+						<option value="{{color}}">{{color}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="color">Opaqueness</label>
+				<select class="form-control" onchange={{action "setOpaqueness" value="target.value"}}>
+					<option value="">--</option>
+					{{#each criteria.opaqueness as |opaqueness|}}
+						<option value="{{opaqueness}}">{{opaqueness}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="color">Head Color</label>
+				<select class="form-control" onchange={{action "setHeadColor" value="target.value"}}>
+					<option value="">--</option>
+					{{#each criteria.headColor as |headColor|}}
+						<option value="{{headColor}}">{{headColor}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="color">Head Size</label>
+				<select class="form-control" onchange={{action "setHeadSize" value="target.value"}}>
+					<option value="">--</option>
+					{{#each criteria.headSize as |headSize|}}	
+						<option value="{{headSize.value}}">{{headSize.translation}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="apperance-score">Appearance score: {{model.rating.appearanceScore}}</label>
+				{{ui-slider 
+			     value=model.rating.appearanceScore 
+			     min=1
+			     max=5 
+			     step=1 
+			     orientation='horizontal' 
+			     tooltip='show' 
+			     disabled=false 
+			     handle='round' 
+			     selection='before' 
+			     tooltipPosition='top' }}
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<h3>Palate</h3>
+			<div class="form-group">
+				<label for="color">Bitterness</label>
+				<select class="form-control"  onchange={{action "setBitterness" value="target.value"}}>
+					<option value="">--</option>
+					{{#each criteria.bitterness as |bitterness|}}
+						<option value="{{bitterness.value}}">{{bitterness.translation}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="color">Thickness</label>
+				<select class="form-control" onchange={{action "setThickness" value="target.value"}}>
+					<option value="">--</option>
+					{{#each criteria.thickness as |thickness|}}
+						<option value="{{thickness.value}}">{{thickness.translation}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="color">Carbonation</label>
+				<select class="form-control" onchange={{action "setCarbonation" value="target.value"}}>
+					<option value="">--</option>
+					{{#each criteria.carbonation as |carbonation|}}
+						<option value="{{carbonation.value}}">{{carbonation.translation}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="color">Aftertaste Length</label>
+				<select class="form-control" onchange={{action "setAftertasteLength" value="target.value"}}>
+					<option value="">--</option>
+					{{#each criteria.aftertasteLength as |aftertasteLength|}}
+						<option value="{{aftertasteLength.value}}">{{aftertasteLength.translation}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="apperance-score">Palate score: {{model.rating.palateScore}}</label>
+				{{ui-slider 
+			     value=model.rating.palateScore 
+			     min=1
+			     max=5 
+			     step=1 
+			     orientation='horizontal' 
+			     tooltip='show' 
+			     disabled=false 
+			     handle='round' 
+			     selection='before' 
+			     tooltipPosition='top' }}
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4">
+			<h3>Aroma</h3>
+
+			{{#if refreshAromas}}
+				{{flavor-selector availableFlavors=model.availableAromas selectedFlavors=model.rating.aromas toggle=(action "toggleAroma")
+				updateStrength=(action "updateStrength")}}
+			{{/if}}
+			<div class="form-group">
+				<label for="apperance-score">Aroma score: {{model.rating.aromaScore}}</label>
+				{{ui-slider 
+			     value=model.rating.aromaScore 
+			     min=1
+			     max=10 
+			     step=1 
+			     orientation='horizontal' 
+			     tooltip='show' 
+			     disabled=false 
+			     handle='round' 
+			     selection='before' 
+			     tooltipPosition='top' }}
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<h3>Flavor</h3>
+
+			{{#if refreshFlavors}}
+				{{flavor-selector availableFlavors=model.availableFlavors selectedFlavors=model.rating.flavors toggle=(action "toggleFlavor")
+				updateStrength=(action "updateStrength")}}
+			{{/if}}
+			<div class="form-group">
+				<label for="apperance-score">Flavor score: {{model.rating.flavorScore}}</label>
+				{{ui-slider 
+			     value=model.rating.flavorScore 
+			     min=1
+			     max=10 
+			     step=1 
+			     orientation='horizontal' 
+			     tooltip='show' 
+			     disabled=false 
+			     handle='round' 
+			     selection='before' 
+			     tooltipPosition='top' }}
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<h3>Aftertaste</h3>
+			{{#if refreshAftertastes}}
+				{{flavor-selector availableFlavors=model.availableAftertastes selectedFlavors=model.rating.aftertastes toggle=(action "toggleAftertaste") updateStrength=(action "updateStrength")}}
+			{{/if}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+		<h3>Overall</h3>
+			<div class="form-group">
+				<label for="portionSize">Comment</label>
+				{{input class="form-control" value=model.rating.overallComment}}
+			</div>
+			<div class="form-group">
+				<label for="apperance-score">Overall score: {{model.rating.overallScore}}</label>
+				{{ui-slider 
+			     value=model.rating.overallScore 
+			     min=1
+			     max=20
+			     step=1 
+			     orientation='horizontal' 
+			     tooltip='show' 
+			     disabled=false 
+			     handle='round' 
+			     selection='before' 
+			     tooltipPosition='top' }}
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="new-flavor">
+					Add new flavor
+				</label>
+				{{input value=newFlavor id="new-flavor"}}
+				<button class="btn btn-primary" {{action "addFlavor"}}>Add
+				</button>
+			</div>
+		</div>
+	</div>
+</form>

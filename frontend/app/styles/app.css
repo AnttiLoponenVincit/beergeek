@@ -1,0 +1,13 @@
+ul {
+	list-style-type: none!important;
+}
+
+.rating {
+	border: 1px solid #ccc;
+	font-size: 120%;
+	padding: 0 20px;
+}
+
+import 'bootstrap';
+
+

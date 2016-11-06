@@ -1,0 +1,7 @@
+<input type="checkbox" checked="checked" {{action "remove" flavor}} id="flavor-{{flavor.flavor.name}}"/>
+<label for="flavor-{{flavor.flavor.name}}">{{flavor.flavor.name}}</label>	
+<select onchange={{action "setStrength" value="target.value"}}>
+	<option value="1" selected={{eq flavor.strength 1}}>Little</option>
+	<option value="2" selected={{eq flavor.strength 2}}>--</option>
+	<option value="3" selected={{eq flavor.strength 3}}>Lots of</option>
+</select>

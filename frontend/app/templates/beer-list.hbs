@@ -1,0 +1,18 @@
+<h2>{{user.name}} Rate a beer!</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	{{#each model as |beer|}}
+		<tr>
+			<td>{{beer.name}}</td>
+			<td>{{#link-to 'rate-beer' beer}}Rate{{/link-to}}</td>
+		</tr>
+	{{/each}}
+	</tbody>
+</table>

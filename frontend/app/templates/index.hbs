@@ -1,0 +1,7 @@
+<h2>Select user</h2>
+<select onchange={{action "selectUser" value="target.value"}}>
+	<option value="">Select user</option>
+	{{#each model as |user|}}
+		<option value="{{user.id}}">{{user.name}}</option>
+	{{/each}}
+</select>
