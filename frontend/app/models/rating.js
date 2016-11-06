@@ -86,7 +86,11 @@ function listAftertastes(aftertastes, aftertasteLength) {
 		 
 		}
 	} else {
-		return "";
+		if (aftertasteLength) {
+			return `Aftertaste is ${RatingUtils.getTranslationFor('aftertasteLength', aftertasteLength)}.`
+		} else {
+			return "";
+		}
 	}
 }
 
@@ -172,7 +176,7 @@ export default DS.Model.extend({
 		'servingType', 'portionSize', 'aromas', 'flavors', 'aftertastes', 
 		'aromas.@each.strength', 'flavors.@each.strength', 
 		'aftertastes.@each.strength', 'overallComment', 'location', function () {
-		var TEXT = `${getDetails(this.get('portionSize'), this.get('servingType'), this.get('location'))} ${getAppearance(this.get('color'), this.get('opaqueness'))} ${getHeadAppearance(this.get('headColor'), this.get('headSize'))} ${listAromas(this.get('aromas'))} ${listFlavors(this.get('flavors'))} ${getPalate(this.get('thickness'), this.get('bitterness'), this.get('carbonation'))} ${listAftertastes(this.get('aftertastes'), this.get('aftertasteLength'))} ${this.get('overallComment')}`;
+		var TEXT = `${getDetails(this.get('portionSize'), this.get('servingType'), this.get('location'))} ${getAppearance(this.get('color'), this.get('opaqueness'))} ${getHeadAppearance(this.get('headColor'), this.get('headSize'))} ${listAromas(this.get('aromas'))} ${listFlavors(this.get('flavors'))} ${getPalate(this.get('thickness'), this.get('bitterness'), this.get('carbonation'))} ${listAftertastes(this.get('aftertastes'), this.get('aftertasteLength'))} ${this.get('overallComment') ? this.get('overallComment') + "." : ""}`;
 		return TEXT;
 	}),
 	score: Ember.computed('flavorScore', 'aromaScore', 'palateScore', 'appearanceScore', 'overallScore', function () {
