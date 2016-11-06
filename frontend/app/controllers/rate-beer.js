@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
 	refreshAromas: true,
 	refreshFlavors: true,
 	refreshAftertastes: true,
+	rating: null,
 	init() {
 		this.set('criteria', RatingUtils.getRatingCriteria());
 	},
@@ -18,7 +19,7 @@ export default Ember.Controller.extend({
 				const availableCollection = 'available' + collection;
 				this.set('model.' + availableCollection, [].toArray());
 				this.get('model.flavors').forEach(flavor => {
-					var itemInRating = this.get('model.rating').get(collection.charAt(0).toLowerCase() + collection.slice(1)).find(item => {
+					var itemInRating = this.get('rating').get(collection.charAt(0).toLowerCase() + collection.slice(1)).find(item => {
 						flavor.get('name') === item.get('flavor').get('name');
 					});
 					if (!itemInRating) {
@@ -32,46 +33,46 @@ export default Ember.Controller.extend({
 		});
 	},
 	toggleCollection(newItem, collection) {
-		const existingItem = this.get('model').rating.get(collection).find(item => {
+		const existingItem = this.get('rating').get(collection).find(item => {
 			return item.get('flavor').get('name') === newItem.get('flavor').get('name');
 		});
 		if (existingItem) {
 			console.log('existing item yes');
-			this.get('model').rating.get(collection).removeObject(existingItem);
+			this.get('rating').get(collection).removeObject(existingItem);
 		} else {
 
 			//newAroma.save().then(aroma => {
-				this.get('model').rating.get(collection).addObject(newItem);
+				this.get('rating').get(collection).addObject(newItem);
 			//})
 		}
 	},
 	actions: {
 		setColor(color) {
-			this.get('model').rating.set('color', color);
+			this.get('rating').set('color', color);
 		},
 		setServingType(type) {
-			this.get('model').rating.set('servingType', type);
+			this.get('rating').set('servingType', type);
 		},
 		setHeadSize(size) {
-			this.get('model').rating.set('headSize', size);
+			this.get('rating').set('headSize', size);
 		},
 		setHeadColor(color) {
-			this.get('model').rating.set('headColor', color);
+			this.get('rating').set('headColor', color);
 		},
 		setOpaqueness(opaqueness) {
-			this.get('model').rating.set('opaqueness', opaqueness);
+			this.get('rating').set('opaqueness', opaqueness);
 		},
 		setBitterness(bitterness) {
-			this.get('model').rating.set('bitterness', bitterness);
+			this.get('rating').set('bitterness', bitterness);
 		},
 		setThickness(thickness) {
-			this.get('model').rating.set('thickness', thickness);
+			this.get('rating').set('thickness', thickness);
 		},
 		setAftertasteLength(length) {
-			this.get('model').rating.set('aftertasteLength', length);
+			this.get('rating').set('aftertasteLength', length);
 		},
 		setCarbonation(carbonation) {
-			this.get('model').rating.set('carbonation', carbonation);
+			this.get('rating').set('carbonation', carbonation);
 		},
 		addFlavor() {
 			if (!this.get('newFlavor')) {

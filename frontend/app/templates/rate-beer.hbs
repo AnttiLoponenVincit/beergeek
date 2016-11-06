@@ -1,10 +1,10 @@
-<h2>User {{model.rating.user.name}} rating beer {{model.rating.beer.name}}</h2>
+<h2>User {{rating.user.name}} rating beer {{rating.beer.name}}</h2>
 	<div class="row">
 		<div class="col-sm-12 rating">
 			<h2>Rating</h2>
-			<p>{{model.rating.text}}</p>
+			<p>{{rating.text}}</p>
 
-			<p>Total Score: {{model.rating.score}} / 50</p>
+			<p>Total Score: {{rating.score}} / 50</p>
 		</div>
 	</div>
 <form>
@@ -22,11 +22,11 @@
 			</div>
 			<div class="form-group">
 				<label for="portionSize">Portion size (ml)</label>
-				{{input class="form-control" value=model.rating.portionSize}}
+				{{input class="form-control" value=rating.portionSize}}
 			</div>
 			<div class="form-group">
 				<label for="portionSize">Location</label>
-				{{input class="form-control" value=model.rating.location}}
+				{{input class="form-control" value=rating.location}}
 			</div>
 		</div>
 		<div class="col-sm-4 border no-top-border no-bottom-border">
@@ -68,9 +68,9 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="apperance-score">Appearance score: {{model.rating.appearanceScore}}</label>
+				<label for="apperance-score">Appearance score: {{rating.appearanceScore}}</label>
 				{{ui-slider 
-			     value=model.rating.appearanceScore 
+			     value=rating.appearanceScore 
 			     min=1
 			     max=5 
 			     step=1 
@@ -121,9 +121,9 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="apperance-score">Palate score: {{model.rating.palateScore}}</label>
+				<label for="apperance-score">Palate score: {{rating.palateScore}}</label>
 				{{ui-slider 
-			     value=model.rating.palateScore 
+			     value=rating.palateScore 
 			     min=1
 			     max=5 
 			     step=1 
@@ -141,13 +141,13 @@
 			<h3>Aroma</h3>
 
 			{{#if refreshAromas}}
-				{{flavor-selector availableFlavors=model.availableAromas selectedFlavors=model.rating.aromas toggle=(action "toggleAroma")
+				{{flavor-selector availableFlavors=model.availableAromas selectedFlavors=rating.aromas toggle=(action "toggleAroma")
 				updateStrength=(action "updateStrength")}}
 			{{/if}}
 			<div class="form-group">
-				<label for="apperance-score">Aroma score: {{model.rating.aromaScore}}</label>
+				<label for="apperance-score">Aroma score: {{rating.aromaScore}}</label>
 				{{ui-slider 
-			     value=model.rating.aromaScore 
+			     value=rating.aromaScore 
 			     min=1
 			     max=10 
 			     step=1 
@@ -163,13 +163,13 @@
 			<h3>Flavor</h3>
 
 			{{#if refreshFlavors}}
-				{{flavor-selector availableFlavors=model.availableFlavors selectedFlavors=model.rating.flavors toggle=(action "toggleFlavor")
+				{{flavor-selector availableFlavors=model.availableFlavors selectedFlavors=rating.flavors toggle=(action "toggleFlavor")
 				updateStrength=(action "updateStrength")}}
 			{{/if}}
 			<div class="form-group">
-				<label for="apperance-score">Flavor score: {{model.rating.flavorScore}}</label>
+				<label for="apperance-score">Flavor score: {{rating.flavorScore}}</label>
 				{{ui-slider 
-			     value=model.rating.flavorScore 
+			     value=rating.flavorScore 
 			     min=1
 			     max=10 
 			     step=1 
@@ -184,7 +184,7 @@
 		<div class="col-sm-4 bottom-border">
 			<h3>Aftertaste</h3>
 			{{#if refreshAftertastes}}
-				{{flavor-selector availableFlavors=model.availableAftertastes selectedFlavors=model.rating.aftertastes toggle=(action "toggleAftertaste") updateStrength=(action "updateStrength")}}
+				{{flavor-selector availableFlavors=model.availableAftertastes selectedFlavors=rating.aftertastes toggle=(action "toggleAftertaste") updateStrength=(action "updateStrength")}}
 			{{/if}}
 		</div>
 	</div>
@@ -193,12 +193,12 @@
 		<h3>Overall</h3>
 			<div class="form-group">
 				<label for="portionSize">Comment</label>
-				{{input class="form-control" value=model.rating.overallComment}}
+				{{input class="form-control" value=rating.overallComment}}
 			</div>
 			<div class="form-group">
-				<label for="apperance-score">Overall score: {{model.rating.overallScore}}</label>
+				<label for="apperance-score">Overall score: {{rating.overallScore}}</label>
 				{{ui-slider 
-			     value=model.rating.overallScore 
+			     value=rating.overallScore 
 			     min=1
 			     max=20
 			     step=1 
