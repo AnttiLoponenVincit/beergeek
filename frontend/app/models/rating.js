@@ -171,7 +171,7 @@ export default DS.Model.extend({
 	overallScore: DS.attr("number"),
 	overallComment: DS.attr('string'),
 	location: DS.attr('string'),
-	text: Ember.computed('color', 'opaqueness', 'headSize', 
+	text: Ember.computed('color', 'opaqueness', 'headSize', 'carbonation',
 		'thickness', 'bitterness', 'headColor', 'aftertasteLength', 
 		'servingType', 'portionSize', 'aromas', 'flavors', 'aftertastes', 
 		'aromas.@each.strength', 'flavors.@each.strength', 
