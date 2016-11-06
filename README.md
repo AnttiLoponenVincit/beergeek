@@ -1,2 +1,2 @@
 # beergeek
-Applicatino for creating structured beer reviews
+Application for creating structured beer reviews
