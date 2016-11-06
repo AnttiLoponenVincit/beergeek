@@ -29,7 +29,7 @@
 				{{input class="form-control" value=model.rating.location}}
 			</div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-4 border no-top-border no-bottom-border">
 			<h3>Appearance</h3>
 			<div class="form-group">
 				<label for="color">Color</label>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-4">
+		<div class="col-sm-4 border no-right-border">
 			<h3>Aroma</h3>
 
 			{{#if refreshAromas}}
@@ -159,7 +159,7 @@
 			     tooltipPosition='top' }}
 			</div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-4 border">
 			<h3>Flavor</h3>
 
 			{{#if refreshFlavors}}
@@ -181,7 +181,7 @@
 			     tooltipPosition='top' }}
 			</div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-4 bottom-border">
 			<h3>Aftertaste</h3>
 			{{#if refreshAftertastes}}
 				{{flavor-selector availableFlavors=model.availableAftertastes selectedFlavors=model.rating.aftertastes toggle=(action "toggleAftertaste") updateStrength=(action "updateStrength")}}
@@ -189,7 +189,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-6 border no-top-border">
 		<h3>Overall</h3>
 			<div class="form-group">
 				<label for="portionSize">Comment</label>
@@ -210,7 +210,7 @@
 			     tooltipPosition='top' }}
 			</div>
 		</div>
-		<div class="col-sm-6">
+		<div class="col-sm-6 flavor-add">
 			<div class="form-group">
 				<label for="new-flavor">
 					Add new flavor

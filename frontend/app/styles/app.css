@@ -8,6 +8,34 @@ ul {
 	padding: 0 20px;
 }
 
+.border {
+	border: 1px solid #ccc;
+}
+
+.no-top-border {
+	border-top: none;
+}
+
+.no-left-border {
+	border-left: none;
+}
+
+.no-bottom-border {
+	border-bottom: none;
+}
+
+.no-right-border {
+	border-right: none;
+}
+
+.bottom-border {
+	border-bottom: 1px solid #ccc;
+}
+
+.flavor-add {
+	padding-top: 30px;
+}
+
 import 'bootstrap';
 
 
